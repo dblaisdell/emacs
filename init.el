@@ -31,7 +31,7 @@
 
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
 (package-initialize)
@@ -40,14 +40,17 @@
 
 (defvar my-packages '(nlinum clojure-mode clj-refactor cider ac-cider company
 			     idle-highlight-mode paredit projectile
-			     rainbow-delimiters yaml-mode
-			     htmlize magit exec-path-from-shell 
+			     rainbow-delimiters yaml-mode 
+			     htmlize magit exec-path-from-shell
 			     puppet-mode puppetfile-mode git git-blame
 			     neotree))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
     (package-install p)))
+
+;; Global Vars
+(setq projectile-switch-project-action 'projectile-find-dir)
 
 ;; Globals
 (require 'rainbow-delimiters)
@@ -56,6 +59,7 @@
 (require 'git)
 (require 'git-blame)
 ;; Global Hooks
+
 (global-linum-mode t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (ac-config-default)
@@ -69,7 +73,6 @@
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
 ;; Puppet
-(require 'puppet)
 (add-hook 'puppet-mode-hook (lambda ()
 			      (auto-complete-mode)))
 
@@ -88,6 +91,7 @@
 				  (auto-complete-mode)
 				  (paredit-mode)
 				  (rainbow-delimiters-mode)))
+
 ;; Neotree
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
