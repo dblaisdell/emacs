@@ -9,7 +9,7 @@
  '(inhibit-startup-screen t)
  '(org-babel-load-languages (quote ((emacs-lisp . t) (plantuml . t))))
  '(org-confirm-babel-evaluate nil)
- '(org-plantuml-jar-path "~/.emacs.d/plantuml.jar")
+ '(org-plantuml-jar-path (expand-file-name "~/.emacs.d/plantuml.jar"))
  '(org-src-fontify-natively t)
  '(rainbow-delimiters-max-face-count 9))
 
@@ -42,7 +42,7 @@
 			     rainbow-delimiters yaml-mode
 			     htmlize magit exec-path-from-shell
 			     puppet-mode puppetfile-mode git git-blame
-			     neotree apache-mode))
+			     neotree apache-mode align-cljlet mvn))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -83,7 +83,8 @@
 (add-hook 'clojure-mode-hook (lambda ()
 			       (auto-complete-mode)
 			       (paredit-mode)
-			       (rainbow-delimiters-mode)))
+			       (rainbow-delimiters-mode)
+			       (align-cljlet)))
 
 ;; Emacs Lisp
 (add-hook 'emacs-lisp-mode-hook (lambda ()
