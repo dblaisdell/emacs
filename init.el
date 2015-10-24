@@ -6,10 +6,9 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (solarized-dark)))
- '(custom-theme-load-path '("~/.emacs.d/elpa/solarized-theme-20150916.504") )
+ '(custom-theme-load-path '("~/.emacs.d/elpa/solarized-theme-20150916.504"))
  '(custom-safe-themes
-   (quote
-    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "13a67c5968379752e55fcb3960125f809ae6230c7711ecbd3aed4f1cc66cf71a" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+   (quote ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "13a67c5968379752e55fcb3960125f809ae6230c7711ecbd3aed4f1cc66cf71a" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(inhibit-startup-screen t)
  '(org-babel-load-languages (quote ((emacs-lisp . t) (plantuml . t))))
  '(org-confirm-babel-evaluate nil)
