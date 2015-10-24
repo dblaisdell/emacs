@@ -29,7 +29,7 @@
  '(rainbow-delimiters-depth-9-face ((t (:foreground "red")))))
 
 (require 'package) ;; You might already have this line
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
