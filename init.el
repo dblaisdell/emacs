@@ -7,10 +7,9 @@
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (tango-dark)))
  '(inhibit-startup-screen t)
- '(org-agenda-files (quote ("c:/Users/lunk/Desktop/todo.org")))
  '(org-babel-load-languages (quote ((emacs-lisp . t) (plantuml . t))))
  '(org-confirm-babel-evaluate nil)
- '(org-plantuml-jar-path "c:/Users/lunk/Downloads/plantuml.jar")
+ '(org-plantuml-jar-path "~/.emacs.d/plantuml.jar")
  '(org-src-fontify-natively t)
  '(rainbow-delimiters-max-face-count 9))
 
@@ -40,7 +39,7 @@
 
 (defvar my-packages '(nlinum clojure-mode clj-refactor cider ac-cider company
 			     idle-highlight-mode paredit projectile
-			     rainbow-delimiters yaml-mode 
+			     rainbow-delimiters yaml-mode
 			     htmlize magit exec-path-from-shell
 			     puppet-mode puppetfile-mode git git-blame
 			     neotree))
