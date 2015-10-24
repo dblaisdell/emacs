@@ -42,7 +42,7 @@
 			     rainbow-delimiters yaml-mode
 			     htmlize magit exec-path-from-shell
 			     puppet-mode puppetfile-mode git git-blame
-			     neotree))
+			     neotree apache-mode))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
