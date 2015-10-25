@@ -6,7 +6,7 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (solarized-dark)))
- '(custom-theme-load-path '("~/.emacs.d/elpa/solarized-theme-20150916.504"))
+ '(custom-theme-load-path  (quote ("~/.emacs.d/elpa/solarized-theme-20150916.504")))
  '(custom-safe-themes
    (quote ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "13a67c5968379752e55fcb3960125f809ae6230c7711ecbd3aed4f1cc66cf71a" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(inhibit-startup-screen t)
@@ -14,7 +14,9 @@
  '(org-confirm-babel-evaluate nil)
  '(org-plantuml-jar-path (expand-file-name "~/.emacs.d/plantuml.jar"))
  '(org-src-fontify-natively t)
- '(rainbow-delimiters-max-face-count 9))
+ '(rainbow-delimiters-max-face-count 9)
+ '(idle-highlight-idle-time 3)
+ '(projectile-switch-project-action  (quote (projectile-find-dir))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -23,7 +25,8 @@
  ;; If there is more than one, they won't work right.
  )
 
-(require 'package) ;; You might already have this line
+;; Package management
+(require 'package)
 ;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
@@ -43,16 +46,16 @@
   (unless (package-installed-p p)
     (package-install p)))
 
-;; Global Vars
-(setq projectile-switch-project-action 'projectile-find-dir)
-(setq idle-highlight-idle-time 2.5)
-
-;; Globals
+;; Requires
 (require 'rainbow-delimiters)
 (require 'uniquify)
 (require 'ansi-color)
 (require 'git)
 (require 'git-blame)
+(require 'cider)
+(require 'ac-cider)
+(require 'yaml-mode)
+(require 'neotree)
 
 ;; Global Hooks
 (global-linum-mode t)
@@ -61,39 +64,38 @@
 (projectile-global-mode)
 
 ;; Cider
-(require 'cider)
-(require 'ac-cider)
 (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 (add-hook 'cider-mode-hook 'ac-cider-setup)
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
 ;; Puppet
-(add-hook 'puppet-mode-hook (lambda ()
-			      (auto-complete-mode)
-			      (idle-highlight-mode)
-			      (show-paren-mode)))
+(add-hook 'puppet-mode-hook
+	  (lambda ()
+	    (auto-complete-mode)
+	    (idle-highlight-mode)
+	    (show-paren-mode)))
 
 ;; YAML
-(require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; Clojure
-(add-hook 'clojure-mode-hook (lambda ()
-			       (auto-complete-mode)
-			       (paredit-mode)
-			       (rainbow-delimiters-mode)
-			       (align-cljlet)
-			       (idle-highlight-mode)))
+(add-hook 'clojure-mode-hook
+	  (lambda ()
+	    (auto-complete-mode)
+	    (paredit-mode)
+	    (rainbow-delimiters-mode)
+	    (align-cljlet)
+	    (idle-highlight-mode)))
 
 ;; Emacs Lisp
-(add-hook 'emacs-lisp-mode-hook (lambda ()
-				  (auto-complete-mode)
-				  (paredit-mode)
-				  (rainbow-delimiters-mode)
-				  (idle-highlight-mode)))
+(add-hook 'emacs-lisp-mode-hook
+	  (lambda ()
+	    (auto-complete-mode)
+	    (paredit-mode)
+	    (rainbow-delimiters-mode)
+	    (idle-highlight-mode)))
 
 ;; Neotree
-(require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
 ;;Solarized Theme
