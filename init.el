@@ -45,6 +45,7 @@
 
 ;; Global Vars
 (setq projectile-switch-project-action 'projectile-find-dir)
+(setq idle-highlight-idle-time 2.0)
 
 ;; Globals
 (require 'rainbow-delimiters)
@@ -68,7 +69,8 @@
 
 ;; Puppet
 (add-hook 'puppet-mode-hook (lambda ()
-			      (auto-complete-mode)))
+			      (auto-complete-mode)
+			      (idle-highlight-mode)))
 
 ;; YAML
 (require 'yaml-mode)
@@ -79,13 +81,15 @@
 			       (auto-complete-mode)
 			       (paredit-mode)
 			       (rainbow-delimiters-mode)
-			       (align-cljlet)))
+			       (align-cljlet)
+			       (idle-highlight-mode)))
 
 ;; Emacs Lisp
 (add-hook 'emacs-lisp-mode-hook (lambda ()
 				  (auto-complete-mode)
 				  (paredit-mode)
-				  (rainbow-delimiters-mode)))
+				  (rainbow-delimiters-mode)
+				  (idle-highlight-mode)))
 
 ;; Neotree
 (require 'neotree)
