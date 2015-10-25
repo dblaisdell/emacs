@@ -15,8 +15,18 @@
  '(org-plantuml-jar-path (expand-file-name "~/.emacs.d/plantuml.jar"))
  '(org-src-fontify-natively t)
  '(rainbow-delimiters-max-face-count 9)
- '(idle-highlight-idle-time 3)
- '(projectile-switch-project-action  (quote (projectile-find-dir))))
+ '(idle-highlight-idle-time 0.5)
+ '(projectile-switch-project-action 'neotree-projectile-action))
+
+;;Setq variables
+(setq
+ backup-by-copying t			; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.saves"))			; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 5
+ kept-old-versions 5
+ version-control t)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -56,6 +66,7 @@
 (require 'ac-cider)
 (require 'yaml-mode)
 (require 'neotree)
+(require 'idle-highlight-mode)
 
 ;; Global Hooks
 (global-linum-mode t)
@@ -69,31 +80,30 @@
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
 ;; Puppet
-(add-hook 'puppet-mode-hook
-	  (lambda ()
-	    (auto-complete-mode)
-	    (idle-highlight-mode)
-	    (show-paren-mode)))
+(add-hook 'puppet-mode-hook (lambda ()
+			      (auto-complete-mode)
+			      (idle-highlight-mode)
+			      (rainbow-delimiters-mode)
+			      (show-paren-mode)))
 
 ;; YAML
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; Clojure
-(add-hook 'clojure-mode-hook
-	  (lambda ()
-	    (auto-complete-mode)
-	    (paredit-mode)
-	    (rainbow-delimiters-mode)
-	    (align-cljlet)
-	    (idle-highlight-mode)))
+(add-hook 'clojure-mode-hook (lambda ()
+			       (auto-complete-mode)
+			       (paredit-mode)
+			       (rainbow-delimiters-mode)
+			       (idle-highlight-mode)
+			       (show-paren-mode)))
 
 ;; Emacs Lisp
-(add-hook 'emacs-lisp-mode-hook
-	  (lambda ()
-	    (auto-complete-mode)
-	    (paredit-mode)
-	    (rainbow-delimiters-mode)
-	    (idle-highlight-mode)))
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+				  (auto-complete-mode)
+				  (paredit-mode)
+				  (rainbow-delimiters-mode)
+				  (idle-highlight-mode)
+				  (show-paren-mode)))
 
 ;; Neotree
 (global-set-key [f8] 'neotree-toggle)
