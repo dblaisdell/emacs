@@ -45,7 +45,7 @@
 
 ;; Global Vars
 (setq projectile-switch-project-action 'projectile-find-dir)
-(setq idle-highlight-idle-time 2.0)
+(setq idle-highlight-idle-time 2.5)
 
 ;; Globals
 (require 'rainbow-delimiters)
@@ -70,7 +70,8 @@
 ;; Puppet
 (add-hook 'puppet-mode-hook (lambda ()
 			      (auto-complete-mode)
-			      (idle-highlight-mode)))
+			      (idle-highlight-mode)
+			      (show-paren-mode)))
 
 ;; YAML
 (require 'yaml-mode)
