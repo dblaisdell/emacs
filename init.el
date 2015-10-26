@@ -33,6 +33,11 @@
   (if (file-exists-p file)
       (load-file file)))
 
+(if (eq system-type 'darwin)
+    (progn (setq mvn-command "/usr/local/bin/mvn")
+	   (setq cider-lein-command "/usr/local/bin/lein")))
+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
