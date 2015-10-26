@@ -28,6 +28,11 @@
  kept-old-versions 5
  version-control t)
 
+
+(let ((file '"~/.emacs.d/proxy.el"))
+  (if (file-exists-p file)
+      (load-file file)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -129,4 +134,4 @@
    (current-buffer)))
 
 ;; Press [pause] key in each window you want to "freeze"
-(global-set-key [pause] 'toggle-window-dedicated)
+(global-set-key [f9] 'toggle-window-dedicated)
