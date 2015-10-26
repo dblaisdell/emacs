@@ -15,7 +15,7 @@
  '(org-plantuml-jar-path (expand-file-name "~/.emacs.d/plantuml.jar"))
  '(org-src-fontify-natively t)
  '(rainbow-delimiters-max-face-count 9)
- '(idle-highlight-idle-time 0.5)
+ '(idle-highlight-idle-time 2.0)
  '(projectile-switch-project-action 'neotree-projectile-action))
 
 ;;Setq variables
@@ -60,7 +60,8 @@
 			     rainbow-delimiters yaml-mode
 			     htmlize magit exec-path-from-shell
 			     puppet-mode puppetfile-mode git git-blame
-			     neotree apache-mode align-cljlet mvn solarized-theme))
+			     neotree apache-mode align-cljlet mvn solarized-theme
+			     markdown-mode))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
