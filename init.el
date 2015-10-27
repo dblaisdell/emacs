@@ -34,8 +34,7 @@
       (load-file file)))
 
 (if (eq system-type 'darwin)
-    (progn (setq mvn-command "/usr/local/bin/mvn")
-	   (setq cider-lein-command "/usr/local/bin/lein")))
+    (progn (setenv "PATH" (concat "~/.rbenv/shims:~/.rbenv/bin:~/local/bin:/usr/local/bin:" (getenv "PATH")))))
 
 
 (custom-set-faces
