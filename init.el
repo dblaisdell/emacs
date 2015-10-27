@@ -60,7 +60,7 @@
 			     htmlize magit exec-path-from-shell
 			     puppet-mode puppetfile-mode git git-blame
 			     neotree apache-mode align-cljlet mvn solarized-theme
-			     markdown-mode))
+			     markdown-mode bundler inf-ruby))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
