@@ -60,7 +60,7 @@
 			     idle-highlight-mode paredit projectile
 			     rainbow-delimiters yaml-mode
 			     htmlize magit exec-path-from-shell
-			     puppet-mode puppetfile-mode git git-blame
+			     puppet-mode git git-blame
 			     neotree apache-mode align-cljlet mvn solarized-theme
 			     markdown-mode bundler inf-ruby cljsbuild-mode))
 
