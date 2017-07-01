@@ -11,7 +11,6 @@
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "13a67c5968379752e55fcb3960125f809ae6230c7711ecbd3aed4f1cc66cf71a" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(custom-theme-load-path (quote ("~/.emacs.d/elpa/solarized-theme-20150916.504")))
  '(inhibit-startup-screen t)
- '(org-agenda-files (quote ("c:/Users/lunk/git/notes/clojure.org")))
  '(org-babel-load-languages (quote ((emacs-lisp . t) (plantuml . t) (clojure . t))))
  '(org-confirm-babel-evaluate nil)
  '(org-plantuml-jar-path (expand-file-name "~/.emacs.d/plantuml.jar"))
@@ -108,14 +107,16 @@
 			       (rainbow-delimiters-mode)
 			       (idle-highlight-mode)
 			       (show-paren-mode)
-			       (clj-refactor-mode)))
+			       (clj-refactor-mode)
+			       (hs-minor-mode)))
 ;; Emacs Lisp
 (add-hook 'emacs-lisp-mode-hook (lambda ()
 				  (auto-complete-mode)
 				  (paredit-mode)
 				  (rainbow-delimiters-mode)
 				  (idle-highlight-mode)
-				  (show-paren-mode)))
+				  (show-paren-mode)
+				  (hs-minor-mode)))
 
 ;; Neotree
 (global-set-key [f8] 'neotree-toggle)
@@ -123,6 +124,10 @@
 ;;Solarized Theme
 (load-theme 'solarized-dark t)
 
+(global-set-key (kbd "C-x <up>") (kbd "C-u 2 C-x ^"))
+(global-set-key (kbd "C-x <down>") (kbd "C-u 5 C-x ^"))
+
+(global-set-key (kbd "C-<return>") (kbd "C-c @ C-c"))
 
 ;; Window Toggle
 (defadvice pop-to-buffer (before cancel-other-window first)
@@ -143,3 +148,9 @@
 
 ;; Press [f9] key in each window you want to "freeze"
 (global-set-key [f9] 'toggle-window-dedicated)
+(put 'upcase-region 'disabled nil)
+
+
+;; hideshow
+(add-hook 'yaml-mode-hook 'hs-minor-mode)
+(add-hook 'javascript-mode-hook 'hs-minor-mode)
