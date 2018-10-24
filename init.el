@@ -9,12 +9,15 @@
  '(custom-safe-themes
    (quote
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "13a67c5968379752e55fcb3960125f809ae6230c7711ecbd3aed4f1cc66cf71a" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
- '(custom-theme-load-path (quote ("~/.emacs.d/elpa/solarized-theme-20150916.504")))
+ '(custom-theme-load-path (quote ("~/.emacs.d/elpa/solarized-theme-20150916.504")) t)
  '(inhibit-startup-screen t)
  '(org-babel-load-languages (quote ((emacs-lisp . t) (plantuml . t) (clojure . t))))
  '(org-confirm-babel-evaluate nil)
  '(org-plantuml-jar-path (expand-file-name "~/.emacs.d/plantuml.jar"))
  '(org-src-fontify-natively t)
+ '(package-selected-packages
+   (quote
+    (cljsbuild-mode bundler markdown-mode solarized-theme mvn align-cljlet apache-mode neotree yaml-mode rainbow-delimiters puppet-mode projectile nlinum magit idle-highlight-mode htmlize git exec-path-from-shell company clj-refactor ac-cider)))
  '(projectile-switch-project-action (quote neotree-projectile-action))
  '(rainbow-delimiters-max-face-count 9))
 
@@ -28,6 +31,7 @@
  kept-old-versions 5
  version-control t)
 
+(setq projectile-keymap-prefix (kbd "C-c p"))
 
 (let ((file '"~/.emacs.d/proxy.el"))
   (if (file-exists-p file)
@@ -59,7 +63,7 @@
 			     idle-highlight-mode paredit projectile
 			     rainbow-delimiters yaml-mode
 			     htmlize magit exec-path-from-shell
-			     puppet-mode git git-blame
+			     puppet-mode git
 			     neotree apache-mode align-cljlet mvn solarized-theme
 			     markdown-mode bundler inf-ruby cljsbuild-mode))
 
@@ -72,12 +76,13 @@
 (require 'uniquify)
 (require 'ansi-color)
 (require 'git)
-(require 'git-blame)
 (require 'cider)
 (require 'ac-cider)
 (require 'yaml-mode)
 (require 'neotree)
 (require 'idle-highlight-mode)
+
+
 
 ;; Global Hooks
 (global-linum-mode t)
